@@ -1,8 +1,9 @@
-require("#{File.dirname(__FILE__)}/log_storage.rb")
-
 class Log
   def call(msg)
-    logger = LogStorage.new
-    logger.call(msg)
+    puts "LogStorage::call |> #{store_message(msg)}"
+  end
+
+  def store_message(msg)
+    "Save to File. Msg: #{msg}"
   end
 end

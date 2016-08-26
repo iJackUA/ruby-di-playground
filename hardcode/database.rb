@@ -3,6 +3,10 @@ require("#{File.dirname(__FILE__)}/log.rb")
 
 class Database
 
+  def log
+    @log = @log || Log.new
+  end
+
   # @param id [Integer]
   # @return [User]
   def get_by_id(id)
@@ -12,13 +16,13 @@ class Database
     user.id = 111
     user.name = "Ievgen"
 
-    log = Log.new
-    log.call("Get user from Database via '#{connection}'")
+    log.call("get_by_id via '#{connection}'")
 
     user
   end
 
   def connection
+    # different logic could be here!
     'jdbc:postgresql://localhost:1234/users'
   end
 end

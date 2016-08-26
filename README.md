@@ -4,4 +4,5 @@ Each sub-folder contains own implementation of the similar synthetic functionali
 
 ### How to run?
 
-* `ruby ./hardcode/app.rb`
+* `ruby ./hardcode/server.rb` - start a fake web app
+* open `http://localhost:8080/` to run our action
