@@ -4,7 +4,6 @@ class UserRepo
 
   def db
     @db = @db || Database.new
-    @db
   end
 
   # @param id [Integer]

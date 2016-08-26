@@ -1,4 +1,6 @@
 require("#{File.dirname(__FILE__)}/user_repo.rb")
+require("#{File.dirname(__FILE__)}/log_elastic.rb")
+require("#{File.dirname(__FILE__)}/database_sqlite.rb")
 
 class App
   def self.action_get_user
@@ -17,15 +19,14 @@ end
 
 # Override hardcoded behavior
 
-class Log
-  def store_message(msg)
-    "Send to Elastic. Msg: #{msg}"
+class Database
+  def log
+    @log = @log || LogElastic.new
   end
 end
 
-class Database
-  def connection
-    # different logic could be here!
-    'jdbc:sqlite://skynet:1234/humanoids'
+class UserRepo
+  def db
+    @db = @db || DatabaseSqlite.new
   end
 end
