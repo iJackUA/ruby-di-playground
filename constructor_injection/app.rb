@@ -10,7 +10,7 @@ class App
     #log = Log.new
     log = LogElastic.new
     #db = Database.new(log)
-    db = Database.new(log)
+    db = DatabaseSqlite.new(log)
 
     repo = UserRepo.new(db)
 
