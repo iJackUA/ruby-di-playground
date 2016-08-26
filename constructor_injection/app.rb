@@ -1,31 +1,24 @@
 require("#{File.dirname(__FILE__)}/user_repo.rb")
+require("#{File.dirname(__FILE__)}/database_sqlite.rb")
+require("#{File.dirname(__FILE__)}/log_elastic.rb")
+
 
 class App
   def self.action_get_user
     puts "Start App action"
 
-    repo = UserRepo.new
+    #log = Log.new
+    log = LogElastic.new
+    #db = Database.new(log)
+    db = Database.new(log)
+
+    repo = UserRepo.new(db)
+
     user = repo.get_by_id(111)
 
     puts "App |> User: #{user.name}"
-
     puts "Finish App action"
 
     "This is #{user.name} speaking!"
-  end
-end
-
-# Override hardcoded behavior
-
-class Log
-  def store_message(msg)
-    "Send to Elastic. Msg: #{msg}"
-  end
-end
-
-class Database
-  def connection
-    # different logic could be here!
-    'jdbc:sqlite://skynet:1234/humanoids'
   end
 end
