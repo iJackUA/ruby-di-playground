@@ -1,16 +1,14 @@
-require("#{File.dirname(__FILE__)}/log.rb")
-require("#{File.dirname(__FILE__)}/user_storage.rb")
+require("#{File.dirname(__FILE__)}/user_repo.rb")
 
 class App
   def self.action_get_user
-    puts "App::run / start"
+    puts "Start App action"
 
-    storage = UserStorage.new
+    storage = UserRepo.new
     user = storage.get_by_id(111)
-    puts "User: #{user.name} | #{user.storage_id}"
+    puts "App |> User: #{user.name}"
 
-    puts "App::run / finish"
+    puts "Finish App action"
+    "This is #{user.name} speaking!"
   end
 end
-
-App.action_get_user

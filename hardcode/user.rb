@@ -1,3 +1,3 @@
 class User
-  attr_accessor :name, :storage_id
+  attr_accessor :id, :name
 end

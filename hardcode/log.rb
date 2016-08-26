@@ -1,9 +1,8 @@
-require("#{File.dirname(__FILE__)}/log_impl_x.rb")
-require("#{File.dirname(__FILE__)}/log_impl_y.rb")
+require("#{File.dirname(__FILE__)}/log_storage.rb")
 
 class Log
   def call(msg)
-    logger = LogImplX.new
+    logger = LogStorage.new
     logger.call(msg)
   end
 end
