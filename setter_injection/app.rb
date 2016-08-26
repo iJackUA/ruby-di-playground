@@ -8,10 +8,12 @@ class App
 
     #log = Log.new
     log = LogElastic.new
-    #db = Database.new(log)
-    db = DatabaseSqlite.new(log)
+    #db = Database.new
+    db = DatabaseSqlite.new
+    db.log = log
 
-    repo = UserRepo.new(db)
+    repo = UserRepo.new
+    repo.db = db
 
     user = repo.get_by_id(111)
 
